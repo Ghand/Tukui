@@ -36,7 +36,7 @@ bar:SetScript("OnEvent", function(self, event, ...)
 			if i == 1 then
 				button:SetPoint("TOPLEFT", TukuiDB.petbuttonspacing, -TukuiDB.petbuttonspacing)
 			else
-				if TukuiCF["actionbar"].bottompetbar ~= true then
+				if TukuiCF["actionbar"].petbarposition == 0 then
 					button:SetPoint("TOP", _G["PetActionButton"..(i - 1)], "BOTTOM", 0, -TukuiDB.petbuttonspacing)
 				else
 					button:SetPoint("LEFT", _G["PetActionButton"..(i - 1)], "RIGHT", TukuiDB.petbuttonspacing, 0)
@@ -59,7 +59,7 @@ bar:SetScript("OnEvent", function(self, event, ...)
 end)
 
 --Setup Mouseover
-if TukuiCF["actionbar"].rightbarmouseover == true and TukuiCF["actionbar"].bottompetbar ~= true then
+if TukuiCF["actionbar"].rightbarmouseover == true and TukuiCF["actionbar"].petbarposition == 0 then
 	TukuiPetActionBarBackground:SetAlpha(0)
 	TukuiPetActionBarBackground:SetScript("OnEnter", function() RightBarMouseOver(1) end)
 	TukuiPetActionBarBackground:SetScript("OnLeave", function() RightBarMouseOver(0) end)

@@ -250,7 +250,7 @@ local function Local(o)
 	if o == "TukuiConfigUIactionbarbottomrows" then o = TukuiL.option_actionbar_rbn2 end
 	if o == "TukuiConfigUIactionbarrightbars" then o = TukuiL.option_actionbar_rn end
 	if o == "TukuiConfigUIactionbarsplitbar" then o = TukuiL.option_actionbar_splitbar end
-	if o == "TukuiConfigUIactionbarbottompetbar" then o = TukuiL.option_actionbar_bottompetbar end
+	if o == "TukuiConfigUIactionbarpetbarposition" then o = TukuiL.option_actionbar_petbarposition end
 	if o == "TukuiConfigUIactionbarbuttonsize" then o = TukuiL.option_actionbar_buttonsize end
 	if o == "TukuiConfigUIactionbarbuttonspacing" then o = TukuiL.option_actionbar_buttonspacing end
 	if o == "TukuiConfigUIactionbarpetbuttonsize" then o = TukuiL.option_actionbar_petbuttonsize end
