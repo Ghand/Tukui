@@ -5,9 +5,9 @@ if not TukuiCF["actionbar"].enable == true then return end
 -- Now used for stances, Bonus at the same time.
 ---------------------------------------------------------------------------
 
-local bar = CreateFrame("Frame", "TukuiMainMenuBar", TukuiActionBarBackground, "SecureHandlerStateTemplate")
+local bar = CreateFrame("Frame", "TukuiMainMenuBar", TukuiActionBarFrame, "SecureHandlerStateTemplate")
 bar:ClearAllPoints()
-bar:SetAllPoints(TukuiActionBarBackground)
+bar:SetAllPoints(TukuiActionBarFrame)
 
 --[[ 
 	Bonus bar classes id

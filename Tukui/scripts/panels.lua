@@ -49,23 +49,28 @@ end
 -- MAIN ACTION BAR
 local barbg = CreateFrame("Frame", "TukuiActionBarBackground", UIParent)
 if TukuiCF["actionbar"].petbarposition >= 0 then
-	TukuiDB.CreatePanel(barbg, 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.Scale(4))
+	barbg:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.Scale(4))
 else
-	TukuiDB.CreatePanel(barbg, 1, 1, "BOTTOM", UIParent, "BOTTOM", 0, (TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2)) + TukuiDB.Scale(8))
+	barbg:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2) + TukuiDB.Scale(8))
 end
-barbg:SetWidth(((TukuiDB.buttonsize * 12) + (TukuiDB.buttonspacing * 13)))
+barbg:SetWidth(TukuiDB.buttonsize * 12 + TukuiDB.buttonspacing * 13)
+if TukuiCF["actionbar"].petbarposition <= 0 then
+	barbg:SetHeight(TukuiDB.buttonsize * TukuiCF["actionbar"].bottomrows + TukuiDB.buttonspacing * (TukuiCF["actionbar"].bottomrows + 1))
+else
+	barbg:SetHeight(TukuiDB.buttonsize * TukuiCF["actionbar"].bottomrows + TukuiDB.buttonspacing * (TukuiCF["actionbar"].bottomrows + 1) + TukuiDB.Scale(3) + TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2))
+end
 barbg:SetFrameLevel(bottompanel:GetFrameLevel() + 2)
 barbg:SetFrameStrata("LOW")
-if TukuiCF["actionbar"].bottomrows == 3 then
-	barbg:SetHeight((TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4))
-elseif TukuiCF["actionbar"].bottomrows == 2 then
-	barbg:SetHeight((TukuiDB.buttonsize * 2) + (TukuiDB.buttonspacing * 3))
-else
-	barbg:SetHeight(TukuiDB.buttonsize + (TukuiDB.buttonspacing * 2))
-end
-TukuiDB.CreateShadow(barbg)
-barbg.shadow:SetFrameStrata("BACKGROUND")
-barbg.shadow:SetFrameLevel(bottompanel:GetFrameLevel()-1)
+
+local barframe = CreateFrame("Frame", "TukuiActionBarFrame", TukuiActionBarBackground)
+TukuiDB.CreatePanel(barframe, 1, 1, "BOTTOM", TukuiActionBarBackground, "BOTTOM", 0, 0)
+barframe:SetWidth(barbg:GetWidth())
+barframe:SetHeight(TukuiDB.buttonsize * TukuiCF["actionbar"].bottomrows + TukuiDB.buttonspacing * (TukuiCF["actionbar"].bottomrows + 1))
+barframe:SetFrameLevel(bottompanel:GetFrameLevel() + 2)
+barframe:SetFrameStrata("LOW")
+TukuiDB.CreateShadow(barframe)
+barframe.shadow:SetFrameStrata("BACKGROUND")
+barframe.shadow:SetFrameLevel(bottompanel:GetFrameLevel()-1)
 
 -- VEHICLE BAR
 local vbarbg = CreateFrame("Frame", "TukuiVehicleBarBackground", UIParent)
@@ -81,15 +86,15 @@ vbarbg.shadow:SetFrameLevel(bottompanel:GetFrameLevel()-1)
 
 --SPLIT BAR PANELS
 if TukuiCF["actionbar"].splitbar == true then
-	local splitleft = CreateFrame("Frame", "TukuiSplitActionBarLeftBackground", TukuiActionBarBackground)
-	TukuiDB.CreatePanel(splitleft, (TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4), TukuiActionBarBackground:GetHeight(), "RIGHT", TukuiActionBarBackground, "LEFT", TukuiDB.Scale(-4), 0)
+	local splitleft = CreateFrame("Frame", "TukuiSplitActionBarLeftBackground", TukuiActionBarFrame)
+	TukuiDB.CreatePanel(splitleft, (TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4), TukuiActionBarFrame:GetHeight(), "RIGHT", TukuiActionBarFrame, "LEFT", TukuiDB.Scale(-4), 0)
 	splitleft:SetFrameLevel(TukuiActionBarBackground:GetFrameLevel())
 	splitleft:SetFrameStrata(TukuiActionBarBackground:GetFrameStrata())
 	
 	local splitright = CreateFrame("Frame", "TukuiSplitActionBarRightBackground", TukuiActionBarBackground)
-	TukuiDB.CreatePanel(splitright, (TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4), TukuiActionBarBackground:GetHeight(), "LEFT", TukuiActionBarBackground, "RIGHT", TukuiDB.Scale(4), 0)
-	splitright:SetFrameLevel(TukuiActionBarBackground:GetFrameLevel())
-	splitright:SetFrameStrata(TukuiActionBarBackground:GetFrameStrata())
+	TukuiDB.CreatePanel(splitright, (TukuiDB.buttonsize * 3) + (TukuiDB.buttonspacing * 4), TukuiActionBarFrame:GetHeight(), "LEFT", TukuiActionBarFrame, "RIGHT", TukuiDB.Scale(4), 0)
+	splitright:SetFrameLevel(TukuiActionBarFrame:GetFrameLevel())
+	splitright:SetFrameStrata(TukuiActionBarFrame:GetFrameStrata())
 	
 	TukuiDB.CreateShadow(splitleft)
 	splitleft.shadow:SetFrameStrata("BACKGROUND")
@@ -126,7 +131,7 @@ if TukuiCF["actionbar"].enable == true then
 		petbg:SetFrameLevel(bottompanel:GetFrameLevel() + 2)
 		petbg:SetFrameStrata("LOW")
 	elseif TukuiCF["actionbar"].petbarposition > 0 then
-		TukuiDB.CreatePanel(petbg, (TukuiDB.petbuttonsize * 10) + (TukuiDB.petbuttonspacing * 11), TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2), "BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", 0, TukuiDB.Scale(2))
+		TukuiDB.CreatePanel(petbg, (TukuiDB.petbuttonsize * 10) + (TukuiDB.petbuttonspacing * 11), TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2), "TOPRIGHT", TukuiActionBarBackground, "TOPRIGHT", 0, 0)
 		petbg:SetFrameLevel(bottompanel:GetFrameLevel() + 2)
 		petbg:SetFrameStrata("LOW")
 	end

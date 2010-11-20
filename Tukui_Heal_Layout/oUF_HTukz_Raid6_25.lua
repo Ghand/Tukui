@@ -219,9 +219,6 @@ oUF:Factory(function(self)
 	if TukuiCF["castbar"].castermode == true and (HealElementsCharPos and HealElementsCharPos["PlayerCastBar"] ~= true) then
 		yOffset = yOffset + 28
 	end
-	if TukuiCF["actionbar"].petbarposition > 0 then
-		yOffset = yOffset + TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2) + TukuiDB.Scale(5)
-	end
 	local raid = self:SpawnHeader("oUF_TukuiHealR6R25", nil, "custom [@raid6,noexists][@raid26,exists] hide;show",
 		'oUF-initialConfigFunction', [[
 			local header = self:GetParent()

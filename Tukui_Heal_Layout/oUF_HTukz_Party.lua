@@ -333,9 +333,6 @@ oUF:Factory(function(self)
 	if TukuiCF["castbar"].castermode == true and (HealElementsCharPos and HealElementsCharPos["PlayerCastBar"] ~= true) then
 		yOffset = yOffset + 28
 	end
-	if TukuiCF["actionbar"].petbarposition > 0 then
-		yOffset = yOffset + TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2) + TukuiDB.Scale(5)
-	end
 	
 	local party
 	if TukuiCF["raidframes"].partypets == true then

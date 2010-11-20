@@ -677,11 +677,7 @@ local function Shared(self, unit)
 			local castbar = CreateFrame("StatusBar", self:GetName().."_Castbar", self)
 			if TukuiCF["castbar"].castermode == true then
 				castbar:SetWidth(TukuiActionBarBackground:GetWidth() - TukuiDB.Scale(4))
-				if TukuiCF["actionbar"].petbarposition > 0 then
-					castbar:SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(5) + TukuiDB.petbuttonsize + (TukuiDB.petbuttonspacing * 2) + TukuiDB.Scale(5))
-				else
-					castbar:SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(5))
-				end
+				castbar:SetPoint("BOTTOMRIGHT", TukuiActionBarBackground, "TOPRIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(5))
 			else
 				castbar:SetWidth(original_width)
 				if powerbar_offset ~= 0 then
