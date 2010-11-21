@@ -5,12 +5,11 @@
 Mod_AddonSkins = CreateFrame("Frame")
 local Mod_AddonSkins = Mod_AddonSkins
 
-local tukskin = TukuiDB.SetTemplate
 local function skinFrame(self, frame)
-	tukskin(frame,frame)
+	TukuiDB.SetTransparentTemplate(frame)
 end
 local function skinButton(self, button)
-	skinFrame(self, button)
+	TukuiDB.SetTemplate(button)
 	-- Crazy hacks which only work because self = Skin *AND* self = config
 	local name = button:GetName()
 	local icon = _G[name.."Icon"]

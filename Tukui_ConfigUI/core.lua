@@ -89,6 +89,9 @@ local function Local(o)
 	if o == "TukuiConfigUInameplateenhancethreat" then o = TukuiL.option_nameplates_enhancethreat end
 	if o == "TukuiConfigUInameplateoverlap" then o = UNIT_NAMEPLATES_ALLOW_OVERLAP end
 	if o == "TukuiConfigUInameplatecombat" then o = TukuiL.option_nameplates_combat end
+	if o == "TukuiConfigUInameplategoodcolor" then o = TukuiL.option_nameplates_goodcolor end
+	if o == "TukuiConfigUInameplatebadcolor" then o = TukuiL.option_nameplates_badcolor end
+	if o == "TukuiConfigUInameplatetransitioncolor" then o = TukuiL.option_nameplates_transitioncolor end
 	
 	-- datatext
 	if o == "TukuiConfigUIdatatext" then o = TukuiL.option_datatext end
@@ -158,6 +161,7 @@ local function Local(o)
 	if o == "TukuiConfigUIraidframespartypets" then o = DISPLAY_RAID_PETS.." ("..HEALER.." "..PARTY..")" end
 	if o == "TukuiConfigUIraidframeshealthdeficit" then o = SHOW.." "..RAID_HEALTH_TEXT_LOSTHEALTH end
 	if o == "TukuiConfigUIraidframesgriddps" then o = TukuiL.option_raidframes_griddps end
+	if o == "TukuiConfigUIraidframesrole" then o = TRACKER_FILTER_LABEL.." "..RAID_SORT_GROUP.." "..RAID_SORT_ROLE end
 	
 	-- unit frames
 	if o == "TukuiConfigUIunitframes" then o = TukuiL.option_unitframes_unitframes end

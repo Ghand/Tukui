@@ -6,8 +6,8 @@ if TukuiCF["raidframes"].griddps ~= true then
 	raidframe_width = TukuiDB.Scale(110)*TukuiCF["raidframes"].scale
 	raidframe_height = TukuiDB.Scale(21)*TukuiCF["raidframes"].scale
 else
-	raidframe_width = TukuiDB.Scale(64.222)*TukuiCF["raidframes"].scale
-	raidframe_height = TukuiDB.Scale(37)*TukuiCF["raidframes"].scale
+	raidframe_width = (ChatLBackground:GetWidth() / 5) - (TukuiDB.Scale(7) - TukuiDB.Scale(1))
+	raidframe_height = TukuiDB.Scale(37)
 end
 
 
@@ -118,6 +118,19 @@ local function Shared(self, unit)
 	name.frequentUpdates = 0.2
 	self:Tag(name, "[Tukui:getnamecolor][Tukui:nameshort]")
 	self.Name = name
+	
+	if TukuiCF["raidframes"].role == true then
+		local LFDRole = self.Health:CreateTexture(nil, "OVERLAY")
+		LFDRole:SetHeight(TukuiDB.Scale(6))
+		LFDRole:SetWidth(TukuiDB.Scale(6))
+		if TukuiCF["raidframes"].griddps ~= true then
+			LFDRole:SetPoint("BOTTOMRIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(-2))
+		else
+			LFDRole:SetPoint("TOP", self.Name, "BOTTOM", 0, TukuiDB.Scale(-1))
+		end
+		LFDRole:SetTexture("Interface\\AddOns\\Tukui\\media\\textures\\lfdicons.blp")
+		self.LFDRole = LFDRole
+	end
 	
     if TukuiCF["unitframes"].aggro == true then
 		table.insert(self.__elements, TukuiDB.UpdateThreat)
