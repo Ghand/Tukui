@@ -107,10 +107,15 @@ local function Shared(self, unit)
 	
 	if TukuiCF["raidframes"].role == true then
 		local LFDRole = self.Health:CreateTexture(nil, "OVERLAY")
-		LFDRole:SetHeight(TukuiDB.Scale(6))
-		LFDRole:SetWidth(TukuiDB.Scale(6))
+		if TukuiCF["raidframes"].role == 1 then
+			LFDRole:SetHeight(TukuiDB.Scale(6))
+			LFDRole:SetWidth(TukuiDB.Scale(6))
+			LFDRole:SetTexture("Interface\\AddOns\\Tukui\\media\\textures\\lfdicons.blp")
+		else
+			LFDRole:SetHeight(TukuiDB.Scale(12))
+			LFDRole:SetWidth(TukuiDB.Scale(12))
+		end
 		LFDRole:SetPoint("TOP", self.Name, "BOTTOM", 0, TukuiDB.Scale(-2))
-		LFDRole:SetTexture("Interface\\AddOns\\Tukui\\media\\textures\\lfdicons.blp")
 		self.LFDRole = LFDRole
 	end
 	

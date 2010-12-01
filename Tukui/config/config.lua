@@ -39,6 +39,7 @@ TukuiCF["unitframes"] = {
 	["poweroffset"] = 9,					--powerbar offset
 	["classbar"] = true,                    -- enable runebar/totembar/holypowerbar/soulshardbar/eclipsebar
 	["combat"] = false,						-- only show main unitframes when in combat/havetarget/or mouseover
+	["role"] = 0,							--display role on unitframe
 }
 
 TukuiCF["framesizes"] = {
@@ -70,7 +71,7 @@ TukuiCF["raidframes"] = {
 	["disableblizz"] = true,				-- fuck fuck fuckin fuck
 	["healthdeficit"] = false,			-- show the health deficit on the raidframes
 	["griddps"] = true,					-- show dps layout in grid style
-	["role"] = false,					--display role on raidframe
+	["role"] = 0,					--display role on raidframe
 }
 
 TukuiCF["auras"] = {

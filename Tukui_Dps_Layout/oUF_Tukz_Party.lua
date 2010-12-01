@@ -107,12 +107,19 @@ local function Shared(self, unit)
     leader:SetPoint("TOPLEFT", 0, 6)
 	self.Leader = leader
 	
-    local LFDRole = health:CreateTexture(nil, "OVERLAY")
-    LFDRole:SetHeight(TukuiDB.Scale(6))
-    LFDRole:SetWidth(TukuiDB.Scale(6))
-	LFDRole:SetPoint("TOPRIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(-2))
-	LFDRole:SetTexture("Interface\\AddOns\\Tukui\\media\\textures\\lfdicons.blp")
-	self.LFDRole = LFDRole
+	if TukuiCF["unitframes"].role ~= 0 then
+		local LFDRole = health:CreateTexture(nil, "OVERLAY")
+		if TukuiCF["unitframes"].role == 1 then
+			LFDRole:SetHeight(TukuiDB.Scale(6))
+			LFDRole:SetWidth(TukuiDB.Scale(6))
+			LFDRole:SetTexture("Interface\\AddOns\\Tukui\\media\\textures\\lfdicons.blp")
+		else
+			LFDRole:SetHeight(TukuiDB.Scale(12))
+			LFDRole:SetWidth(TukuiDB.Scale(12))
+		end
+		LFDRole:SetPoint("TOPRIGHT", TukuiDB.Scale(-2), TukuiDB.Scale(-2))
+		self.LFDRole = LFDRole
+	end
 	
     local MasterLooter = health:CreateTexture(nil, "OVERLAY")
     MasterLooter:SetHeight(TukuiDB.Scale(12))

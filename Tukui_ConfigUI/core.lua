@@ -190,6 +190,7 @@ local function Local(o)
 	if o == "TukuiConfigUIunitframeshealthbackdropcolor" then o = TukuiL.option_unitframes_healthbackdropcolor end
 	if o == "TukuiConfigUIunitframeshealthcolorbyvalue" then o = TukuiL.option_unitframes_healthcolorbyvalue end
 	if o == "TukuiConfigUIunitframescombat" then o = TukuiL.option_unitframes_combat end
+	if o == "TukuiConfigUIunitframesrole" then o = TRACKER_FILTER_LABEL.." "..RAID_SORT_GROUP.." "..RAID_SORT_ROLE end
 	
 	-- frame sizes
 	if o == "TukuiConfigUIframesizes" then o = TukuiL.option_framesizes end
