@@ -14,9 +14,11 @@ local SpamList = {
 	"Discount",
 	"discount",
 }
-local function TRADE_FILTER(self, event, arg1)
+
+local function TRADE_FILTER(self, event, arg1, arg2)
 	if (SpamList and SpamList[1]) then
 		for i, SpamList in pairs(SpamList) do
+			if arg2 == TukuiDB.myname then return end
 			if (strfind(arg1, SpamList)) then
 				return true
 			end
@@ -74,6 +76,17 @@ end
 ChatFrame_AddMessageEventFilter("CHAT_MSG_SYSTEM", SPELL_FILTER)
 
 
+----------------------------------------------------------------------------------
+-- Only enabling this for me because i get asked too much
+----------------------------------------------------------------------------------
+if TukuiDB.myname == "Elv" then
+	local function NOOB_FILTER(self, event, arg1, arg2)
+		if strfind(arg1,"that mount") or strfind(arg1, "mount from") or strfind(arg1, "your mount") or strfind(arg1, "ur mount") or strfind(arg1, "the mount") --[[ <-- third world lingo ]] then
+			SendChatMessage("I got this mount in Desolace it was a world drop, you need to open up some crates near the shore, it only works for the first one you open per day.", "WHISPER", nil, arg2)
+		end
+	end
+	ChatFrame_AddMessageEventFilter("CHAT_MSG_WHISPER", NOOB_FILTER)	
+end
 
 
 

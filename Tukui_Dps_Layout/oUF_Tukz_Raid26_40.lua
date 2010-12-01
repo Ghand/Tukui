@@ -77,7 +77,7 @@ local function Shared(self, unit)
 	end
 	name:SetFont(TukuiCF["media"].uffont, (TukuiCF["raidframes"].fontsize-1)*TukuiCF["raidframes"].scale, "THINOUTLINE")
 	name:SetShadowOffset(1, -1)
-	name.frequentUpdates = 0.2
+	
 	self:Tag(name, "[Tukui:getnamecolor][Tukui:nameshort]")
 	self.Name = name
 	
@@ -92,7 +92,11 @@ local function Shared(self, unit)
 		local RaidIcon = health:CreateTexture(nil, 'OVERLAY')
 		RaidIcon:SetHeight(TukuiDB.Scale(15)*TukuiCF["raidframes"].scale)
 		RaidIcon:SetWidth(TukuiDB.Scale(15)*TukuiCF["raidframes"].scale)
-		RaidIcon:SetPoint('LEFT', self.Name, 'RIGHT')
+		if TukuiCF["raidframes"].griddps ~= true then
+			RaidIcon:SetPoint('LEFT', self.Name, 'RIGHT')
+		else
+			RaidIcon:SetPoint('CENTER', self, 'TOP')
+		end
 		RaidIcon:SetTexture('Interface\\AddOns\\Tukui\\media\\textures\\raidicons.blp')
 		self.RaidIcon = RaidIcon
 	end
@@ -130,6 +134,11 @@ local function Shared(self, unit)
 	if TukuiCF["auras"].raidunitbuffwatch == true then
 		TukuiDB.createAuraWatch(self,unit)
     end
+	
+	-- execute an update on every raids unit if party or raid member changed
+	-- should fix issues with names/symbols/etc not updating introduced with 4.0.3 patch
+	self:RegisterEvent("PARTY_MEMBERS_CHANGED", TukuiDB.updateAllElements)
+	self:RegisterEvent("RAID_ROSTER_UPDATE", TukuiDB.updateAllElements)
 		
 	return self
 end
