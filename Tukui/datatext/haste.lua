@@ -14,21 +14,18 @@ if TukuiCF["datatext"].haste and TukuiCF["datatext"].haste > 0 then
 	local int = 1
 
 	local function Update(self, t)
-		spellhaste = GetCombatRating(20)
-		rangedhaste = GetCombatRating(19)
-		attackhaste = GetCombatRating(18)
-		
-		if attackhaste > spellhaste and TukuiDB.class ~= "HUNTER" then
-			haste = attackhaste
+		local id
+		if GetCombatRating(18) > GetCombatRating(20) and TukuiDB.class ~= "HUNTER" then
+			id = 18
 		elseif TukuiDB.class == "HUNTER" then
-			haste = rangedhaste
+			id = 19
 		else
-			haste = spellhaste
+			id = 20
 		end
 		
 		int = int - t
 		if int < 0 then
-			Text:SetText(SPELL_HASTE_ABBR..": "..valuecolor..haste)
+			Text:SetText(SPELL_HASTE_ABBR..": "..valuecolor..format("%.2f", GetCombatRatingBonus(id)).."%")
 			int = 1
 		end     
 	end
