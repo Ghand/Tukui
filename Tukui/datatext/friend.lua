@@ -5,7 +5,7 @@
 if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 	local Stat = CreateFrame("Frame")
 	Stat:EnableMouse(true)
-	Stat:SetFrameStrata("BACKGROUND")
+	Stat:SetFrameStrata("MEDIUM")
 	Stat:SetFrameLevel(3)
 
 	local tthead = {r=0.4,g=0.78,b=1}
@@ -26,6 +26,7 @@ if TukuiCF["datatext"].friends and TukuiCF["datatext"].friends > 0 then
 
 	local Text  = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
 	Text:SetFont(TukuiCF.media.font, TukuiCF["datatext"].fontsize, "THINOUTLINE")
+	Text:SetShadowOffset(TukuiDB.mult, -TukuiDB.mult)
 	TukuiDB.PP(TukuiCF["datatext"].friends, Text)
 
 	local menuFrame = CreateFrame("Frame", "MinimapRightClickMenu", UIParent, "UIDropDownMenuTemplate")

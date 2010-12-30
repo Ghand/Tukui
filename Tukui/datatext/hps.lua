@@ -15,7 +15,7 @@ if TukuiCF["datatext"].hps_text and TukuiCF["datatext"].hps_text > 0 then
 	TukuiDB.PP(TukuiCF["datatext"].hps_text, hText)
  
 	HPS_FEED:EnableMouse(true)
-	HPS_FEED:SetFrameStrata("BACKGROUND")
+	HPS_FEED:SetFrameStrata("MEDIUM")
 	HPS_FEED:SetFrameLevel(3)
 	HPS_FEED:SetHeight(TukuiDB.Scale(20))
 	HPS_FEED:SetWidth(TukuiDB.Scale(100))

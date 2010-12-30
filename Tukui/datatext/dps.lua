@@ -18,7 +18,7 @@ if TukuiCF["datatext"].dps_text and TukuiCF["datatext"].dps_text > 0 then
 	TukuiDB.PP(TukuiCF["datatext"].dps_text, dText)
 
 	DPS_FEED:EnableMouse(true)
-	DPS_FEED:SetFrameStrata("BACKGROUND")
+	DPS_FEED:SetFrameStrata("MEDIUM")
 	DPS_FEED:SetFrameLevel(3)
 	DPS_FEED:SetHeight(TukuiDB.Scale(20))
 	DPS_FEED:SetWidth(TukuiDB.Scale(100))

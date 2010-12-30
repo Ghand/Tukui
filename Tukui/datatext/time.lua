@@ -4,12 +4,13 @@
 if TukuiCF["datatext"].wowtime and TukuiCF["datatext"].wowtime > 0 then
 	local Stat = CreateFrame("Frame")
 	Stat:EnableMouse(true)
-	Stat:SetFrameStrata("BACKGROUND")
+	Stat:SetFrameStrata("MEDIUM")
 	Stat:SetFrameLevel(3)
 	
 	local Text
 	Text = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
 	Text:SetFont(TukuiCF.media.font, TukuiCF["datatext"].fontsize, "THINOUTLINE")
+	Text:SetShadowOffset(TukuiDB.mult, -TukuiDB.mult)
 	TukuiDB.PP(TukuiCF["datatext"].wowtime, Text)
 
 	local int = 1

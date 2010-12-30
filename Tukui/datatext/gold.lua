@@ -5,11 +5,12 @@
 if TukuiCF["datatext"].gold and TukuiCF["datatext"].gold > 0 then
 	local Stat = CreateFrame("Frame")
 	Stat:EnableMouse(true)
-	Stat:SetFrameStrata("BACKGROUND")
+	Stat:SetFrameStrata("MEDIUM")
 	Stat:SetFrameLevel(3)
 
 	local Text  = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
 	Text:SetFont(TukuiCF.media.font, TukuiCF["datatext"].fontsize, "THINOUTLINE")
+	Text:SetShadowOffset(TukuiDB.mult, -TukuiDB.mult)
 	TukuiDB.PP(TukuiCF["datatext"].gold, Text)
 
 	local Profit	= 0

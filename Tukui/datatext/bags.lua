@@ -5,7 +5,7 @@
 if TukuiCF["datatext"].bags and TukuiCF["datatext"].bags > 0 then
 	local Stat = CreateFrame("Frame")
 	Stat:EnableMouse(true)
-	Stat:SetFrameStrata("BACKGROUND")
+	Stat:SetFrameStrata("MEDIUM")
 	Stat:SetFrameLevel(3)
 
 	local Text  = TukuiBottomPanel:CreateFontString(nil, "OVERLAY")
