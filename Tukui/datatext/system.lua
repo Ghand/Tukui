@@ -60,6 +60,16 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 		self:SetAllPoints(Text)
 	end
 
+	local function GetLatencyColor(latency)
+		if latency < 300 then
+			return "|cff0CD809"
+		end
+		if latency < 500 then
+			return "|cffE8DA0F"
+		end
+		return "|cffD80909"
+	end
+
 	local int, int2 = 10, 1
 	local function Update(self, t)
 		int = int - t
@@ -72,13 +82,7 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 			int = 10
 		end
 		if int2 < 0 then
-			if select(3, GetNetStats()) < 300 then
-				latencycolor = "|cff0CD809"
-			elseif (select(3, GetNetStats()) > 300 and select(3, GetNetStats()) < 500) then
-				latencycolor = "|cffE8DA0F"
-			else
-				latencycolor = "|cffD80909"
-			end
+			local down, up, home, world = GetNetStats()
 			if floor(GetFramerate()) >= 30 then
 				fpscolor = "|cff0CD809"
 			elseif (floor(GetFramerate()) > 15 and floor(GetFramerate()) < 30) then
@@ -86,7 +90,7 @@ if TukuiCF["datatext"].system and TukuiCF["datatext"].system > 0 then
 			else
 				fpscolor = "|cffD80909"
 			end
-			Text:SetText("FPS: "..fpscolor..floor(GetFramerate()).."  |r".."MS: "..latencycolor..select(3, GetNetStats()))
+			Text:SetText("FPS: "..fpscolor..floor(GetFramerate()).."  |rH: "..GetLatencyColor(home)..home.."|r W: "..GetLatencyColor(world)..world)
 			int2 = 0.8
 		end
 	end
